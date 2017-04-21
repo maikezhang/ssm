@@ -13,6 +13,15 @@
 	<!-- 自动扫描注解的bean -->
 	<context:component-scan base-package="org.tonny" />
 	
+	<!-- 
+	这里实际上扫描了org.tonny 这个包下面的所有bean，会与spring-mvc中扫描的内容发生重复
+	更合理的方法是将spring.xml文件进行拆分
+	spring-dao   只扫描dao相关的bean
+	spring-service   只扫描service相关的bean
+	spring-trans   设置事务相关的信息
+	最后在xml中采用spring-*的形式包括进来
+	 -->
+	
 	<!-- 引入配置文件 -->    
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
         <property name="locations">    
